@@ -1,0 +1,84 @@
+@import "../../stylesheets/abstracts/mixins";
+@import "../../stylesheets/abstracts/functions";
+@import "../../stylesheets/abstracts/variables";
+@import "../../stylesheets/abstracts/extends";
+@import "../../stylesheets/abstracts/extends";
+@import "../../stylesheets/abstracts/animations";
+@import "../../stylesheets/abstracts/breakpoints";
+@import "../../stylesheets/abstracts/z-index";
+@import "../../stylesheets/layout/containers";
+
+.product {
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__gallery {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    @include tablet {
+      width: 50%;
+    }
+    @include laptop {
+      width: 30%;
+    }
+  }
+  &__content {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: 100%;
+    @include tablet {
+      width: 50%;
+    }
+    @include laptop {
+      width: 70%;
+    }
+  }
+  &__contributors {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  &__sale {
+    span {
+      font-weight: 700;
+    }
+  }
+  &__price {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 2rem;
+  }
+  &__options {
+    margin-bottom: 1rem;
+  }
+}
+
+.contributor {
+  &__name {
+    font-weight: 700;
+  }
+}
+
+.tabs {
+  &__links {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  &__link {
+    line-height: 1;
+    button {
+      padding: 0.5rem 1rem;
+      background: none;
+      border: none;
+      border-radius: none;
+    }
+    &--active {
+      button {
+        background: #efefef;
+      }
+    }
+  }
+}
