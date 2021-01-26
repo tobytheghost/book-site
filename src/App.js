@@ -24,7 +24,7 @@ const DemoBook = () => {
 const App = () => {
   return (
     <div className="app">
-      <Header />
+      {/* <Header /> */}
       <main>
         <Router>
           <Switch>
@@ -33,7 +33,7 @@ const App = () => {
           </Switch>
         </Router>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

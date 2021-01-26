@@ -13,6 +13,7 @@ const Product = () => {
   const [prices, setPrices] = useState(null);
   const [currency, setCurrency] = useState("USD");
   const [tab, setTab] = useState("about");
+  const [quantity, setQuantity] = useState(1);
 
   const { productId } = useParams();
 
@@ -49,6 +50,7 @@ const Product = () => {
       );
       return (
         <li
+          key={name}
           className="contributor"
           dangerouslySetInnerHTML={{
             __html: contributorString,
@@ -74,6 +76,14 @@ const Product = () => {
     console.log(value);
   };
 
+  const handleQuantityOnChange = (e) => {
+    setQuantity(e.target.value);
+  };
+
+  const handleCurrencyOnChange = (e) => {
+    setCurrency(e.target.value);
+  };
+
   return (
     <div className="product container">
       <div className="breadcrumbs">
@@ -88,6 +98,10 @@ const Product = () => {
             {bookData.title}
           </li>
         </ul>
+        <select className="product__currency" onChange={handleCurrencyOnChange}>
+          <option value="USD">USD</option>
+          <option value="CAD">CAD</option>
+        </select>
       </div>
       <section className="product__row">
         <div className="product__gallery">
@@ -118,6 +132,16 @@ const Product = () => {
               );
             })}
           </select>
+          <div className="product__buy">
+            Qty.{" "}
+            <input
+              className="product__quantity"
+              type="number"
+              value={quantity}
+              onChange={handleQuantityOnChange}
+            />{" "}
+            <button className="product__add">Add to basket</button>
+          </div>
           <div className="tabs">
             <ul className="tabs__links">
               <li
@@ -125,9 +149,11 @@ const Product = () => {
                   tab === "about" ? "tabs__link--active" : ""
                 }`}
               >
-                <button onClick={() => handleTabChange("about")}>About</button>
+                <button onClick={() => handleTabChange("about")}>
+                  Description
+                </button>
               </li>
-              <li
+              {/* <li
                 className={`tabs__link ${
                   tab === "details" ? "tabs__link--active" : ""
                 }`}
@@ -135,7 +161,7 @@ const Product = () => {
                 <button onClick={() => handleTabChange("details")}>
                   Product Details
                 </button>
-              </li>
+              </li> */}
               <li
                 className={`tabs__link ${
                   tab === "reviews" ? "tabs__link--active" : ""
