@@ -24,25 +24,24 @@
     background: $white;
     padding: 1rem;
     width: 100%;
-    @include tablet {
+    @include laptop {
       width: 50%;
     }
-    @include laptop {
+    @include desktop {
       width: 30%;
     }
     img {
       width: 100%;
-      margin-bottom: 1rem;
     }
   }
   &__content {
     background: $white;
     padding: 1rem;
     width: 100%;
-    @include tablet {
+    @include laptop {
       width: 50%;
     }
-    @include laptop {
+    @include desktop {
       width: 70%;
     }
   }
@@ -62,9 +61,9 @@
     font-size: 2rem;
   }
   &__options {
-    margin-bottom: 1rem;
   }
   &__buy {
+    margin-top: 1rem;
     margin-bottom: 1rem;
   }
   &__currency {
@@ -78,6 +77,21 @@
     padding: 0.5rem;
     cursor: pointer;
   }
+  &__retailers {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #efefef;
+  }
+  &__retailer {
+    padding: 1rem;
+    background: #efefef;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .contributor {
@@ -90,6 +104,9 @@
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid #efefef;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #efefef;
   &__links {
     display: flex;
     margin-bottom: 1rem;
@@ -107,6 +124,42 @@
       button {
         background: #efefef;
       }
+    }
+  }
+}
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  &__item {
+    padding: 0.5rem;
+    background: #efefef;
+    border-radius: 1.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.contributors {
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  &__image {
+    margin-bottom: 1rem;
+  }
+}
+
+.review {
+  &__content {
+    margin-bottom: 1rem;
+  }
+  &__author {
+    margin-bottom: 2rem;
+    &::before {
+      content: " - ";
+      margin-left: 1rem;
     }
   }
 }

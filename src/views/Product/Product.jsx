@@ -12,14 +12,26 @@ const Product = () => {
   const [loading, setLoading] = useState(true);
   const [prices, setPrices] = useState(null);
   const [currency, setCurrency] = useState("USD");
-  const [tab, setTab] = useState("about");
-  const [quantity, setQuantity] = useState(1);
+
+  const tabOptions = [
+    { value: "description", label: "Description" },
+    { value: "about", label: "About the Author" },
+    { value: "reviews", label: "Reviews" },
+  ];
+
+  const [tab, setTab] = useState(tabOptions[0].value);
+  // const [quantity, setQuantity] = useState(1);
 
   const { productId } = useParams();
 
   useEffect(() => {
     const getData = async () => {
       const data = await getBook(productId);
+
+      if (!data) {
+        setLoading(false);
+        return;
+      }
 
       setBookData(data);
       setPrices(data.formats[0].prices);
@@ -73,15 +85,32 @@ const Product = () => {
     const value = e.target.value;
     const format = bookData.formats.find((item) => item.id === value);
     format.prices.length ? setPrices(format.prices) : setPrices(null);
-    console.log(value);
   };
 
-  const handleQuantityOnChange = (e) => {
-    setQuantity(e.target.value);
-  };
+  // const handleQuantityOnChange = (e) => {
+  //   setQuantity(e.target.value);
+  // };
 
   const handleCurrencyOnChange = (e) => {
     setCurrency(e.target.value);
+  };
+
+  const tabs = () => {
+    const tabItems = tabOptions.map((item) => {
+      return (
+        <li
+          key={item.value}
+          className={`tabs__link ${
+            tab === item.value ? "tabs__link--active" : ""
+          }`}
+        >
+          <button onClick={() => handleTabChange(item.value)}>
+            {item.label}
+          </button>
+        </li>
+      );
+    });
+    return tabItems;
   };
 
   return (
@@ -132,7 +161,7 @@ const Product = () => {
               );
             })}
           </select>
-          <div className="product__buy">
+          {/* <div className="product__buy">
             Qty.{" "}
             <input
               className="product__quantity"
@@ -141,39 +170,11 @@ const Product = () => {
               onChange={handleQuantityOnChange}
             />{" "}
             <button className="product__add">Add to basket</button>
-          </div>
+          </div> */}
           <div className="tabs">
-            <ul className="tabs__links">
-              <li
-                className={`tabs__link ${
-                  tab === "about" ? "tabs__link--active" : ""
-                }`}
-              >
-                <button onClick={() => handleTabChange("about")}>
-                  Description
-                </button>
-              </li>
-              {/* <li
-                className={`tabs__link ${
-                  tab === "details" ? "tabs__link--active" : ""
-                }`}
-              >
-                <button onClick={() => handleTabChange("details")}>
-                  Product Details
-                </button>
-              </li> */}
-              <li
-                className={`tabs__link ${
-                  tab === "reviews" ? "tabs__link--active" : ""
-                }`}
-              >
-                <button onClick={() => handleTabChange("reviews")}>
-                  Reviews
-                </button>
-              </li>
-            </ul>
-            {tab === "about" && (
-              <div className="product__tab product__tab--about">
+            <ul className="tabs__links">{tabs()}</ul>
+            {tab === "description" && (
+              <div className="product__tab product__tab--description">
                 <div
                   className="product__description"
                   dangerouslySetInnerHTML={{
@@ -182,9 +183,34 @@ const Product = () => {
                 ></div>
               </div>
             )}
-            {tab === "details" && (
-              <div className="product__tab product__tab--details">
-                <div className="product__details"></div>
+            {tab === "about" && (
+              <div className="product__tab product__tab--about">
+                <div className="product__about">
+                  <ul className="contributors">
+                    {bookData.contributors?.map((contributor) => {
+                      return (
+                        <li className="contributors__item">
+                          <img
+                            className="contributors__image"
+                            src={contributor.contributor.image}
+                            alt={contributor.contributor.name}
+                          />
+                          <div className="contributor__content">
+                            <h4 className="contributors__name">
+                              {contributor.contributor.name}
+                            </h4>
+                            <div
+                              className="contributors__bio"
+                              dangerouslySetInnerHTML={{
+                                __html: contributor.contributor.bio,
+                              }}
+                            ></div>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
             )}
             {tab === "reviews" && (
@@ -211,6 +237,35 @@ const Product = () => {
                 </div>
               </div>
             )}
+          </div>
+          <div className="product__retailers">
+            <h3>Retailers</h3>
+            {bookData.retailers?.map((retailer) => {
+              return (
+                <a
+                  className="product__retailer"
+                  key={retailer.seo}
+                  href={retailer.path}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {retailer.label}
+                </a>
+              );
+            })}
+          </div>
+          <div className="product__keywords">
+            <h3>Keywords</h3>
+            <ul className="keywords">
+              {bookData.keywords?.split(";").map((keyword) => {
+                const word = keyword.trim();
+                return (
+                  <li key={word} className="keywords__item">
+                    {word}
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </section>
