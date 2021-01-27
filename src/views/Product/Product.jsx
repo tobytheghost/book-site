@@ -15,7 +15,7 @@ const Product = () => {
 
   const tabOptions = [
     { value: "description", label: "Description" },
-    { value: "about", label: "About the Author" },
+    { value: "about", label: "About" },
     { value: "reviews", label: "Reviews" },
   ];
 

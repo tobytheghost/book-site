@@ -84,7 +84,8 @@
   }
   &__retailer {
     padding: 1rem;
-    background: #efefef;
+    background: #d63031;
+    color: #fff;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
     font-size: 1.25rem;
@@ -116,13 +117,13 @@
     button {
       cursor: pointer;
       padding: 0.5rem 1rem;
-      background: none;
+      background: #ffeaa7;
       border: none;
       border-radius: none;
     }
     &--active {
       button {
-        background: #efefef;
+        background: #fdcb6e;
       }
     }
   }
@@ -133,7 +134,9 @@
   flex-wrap: wrap;
   &__item {
     padding: 0.5rem;
-    background: #efefef;
+    background: #e17055;
+    color: #fff;
+    font-weight: 700;
     border-radius: 1.5rem;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
