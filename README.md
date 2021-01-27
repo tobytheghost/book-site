@@ -6,9 +6,11 @@ The final result can be found here: [https://book-site-frontend-challenge.web.ap
 
 The app is routed but will re-route you on load to the `/products/productId` route (with the demo ID) as this is the key page of the project.
 
+The app is deployed using Google Firebase.
+
 ## The Challenge 🔥
 
-The challenge was to create a `product details page` using json data from an API provided by Supadu.
+The challenge was to create a "product details page" using json data from an API provided by Supadu.
 
 The page was to contain the following information:
 
@@ -47,6 +49,8 @@ Each applicant of the challenge would be rated on the following:
 Because of the time constraints I kept the design / layout very plain - this was to be able to spend more time on the JS aspects of the project. I also don't claim to be a designer - while I can work from designs provided my own design skills are limited.
 
 Having more time on the project or in a production setting I would update the design and add some additional styling and animation. I would also include a Header / Footer and style the 404 page.
+
+
 
 ## The Action ⚡
 
