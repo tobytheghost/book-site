@@ -52,7 +52,7 @@ Having more time on the project or in a production setting I would update the de
 
 ## Notes
 
-- The `.env.` file has been included in the repo for ease of setting up a local environment - this would normally not be commit.
+- The `.env` file has been included in the repo for ease of setting up a local environment - this would normally not be commit.
 - There is a function called `DemoBook` in `App.js` which has been setup as a quick way to allow all links other than the demo link to route to the demo page. This would not be used in a production setting.
 
 
