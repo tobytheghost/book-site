@@ -44,15 +44,19 @@ Each applicant of the challenge would be rated on the following:
 - Clean readable layout and styles
 - Accessibility features are a bonus
 
-## The Result 🌐
+## Results 🌐
 
 Because of the time constraints I kept the design / layout very plain - this was to be able to spend more time on the JS aspects of the project. I also don't claim to be a designer - while I can work from designs provided my own design skills are limited.
 
 Having more time on the project or in a production setting I would update the design and add some additional styling and animation. I would also include a Header / Footer and style the 404 page.
 
+## Notes
+
+- The `.env.` file has been included in the repo for ease of setting up a local environment - this would normally not be commit.
+- There is a function called `DemoBook` in `App.js` which has been setup as a quick way to allow all links other than the demo link to route to the demo page. This would not be used in a production setting.
 
 
-## The Action ⚡
+## Actions ⚡
 
 In the project directory, you can run:
 
